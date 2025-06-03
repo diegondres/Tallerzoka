@@ -11,13 +11,15 @@ public class CamaraMovimiento : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        newPosition = prota.position;
+
         UpdatePosition();
     }
 
     private void UpdatePosition()
     {
-        Vector3 newPos = new(newPosition.x, newPosition.y , transform.position.z);
+        if (prota == null) return;
+        newPosition = prota.position;
+        Vector3 newPos = new(newPosition.x, newPosition.y, transform.position.z);
         transform.position = Vector3.Lerp(transform.position, newPos, sensitivity);
     }
 }

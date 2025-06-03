@@ -8,16 +8,25 @@ public class EnergiaController : MonoBehaviour
 {
     public TextMeshProUGUI textoEnergia;
     public Scrollbar barraEnergia;
-
+    public float speed = 1f;
+    private ControladorJuego controlador;
     void Start()
     {
+        controlador = FindAnyObjectByType<ControladorJuego>();
         barraEnergia.size = 1;
-        textoEnergia.text = "100%";        
+        textoEnergia.text = GetTextEnergy();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void UpdateEnergy(float change)
     {
-        
+        barraEnergia.size += change / 100 * speed;
+        textoEnergia.text = GetTextEnergy();
+        if (barraEnergia.size <= 0) controlador.FinalDelJuego();
+    }
+
+    private string GetTextEnergy()
+    {
+        float energia = barraEnergia.size * 100f;
+        return energia.ToString("F2") + "%";
     }
 }

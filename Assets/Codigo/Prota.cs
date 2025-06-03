@@ -9,7 +9,14 @@ public class Prota : MonoBehaviour
     public float velocidadRotacion = 100f;
     public Transform punta;
     public GameObject bala;
-
+    private ControladorJuego controlador;
+    private EnergiaController energiaController;
+    public float gainEnergy = 500f;
+    void Awake()
+    {
+        controlador = FindAnyObjectByType<ControladorJuego>();
+        energiaController = FindAnyObjectByType<EnergiaController>();
+    }
 
     void Update()
     {
@@ -31,7 +38,7 @@ public class Prota : MonoBehaviour
         float rotacion = movimientoHorizontal * velocidadRotacion * Time.deltaTime;
 
         // Aplicar rotación (girar a los lados) 
-        transform.Rotate(0, 0, rotacion);
+        transform.Rotate(0, 0, -rotacion);
 
         // Mover hacia adelante/atrás con respecto a donde mira usando transform.forward
         transform.position += transform.up * movimiento;
@@ -47,9 +54,15 @@ public class Prota : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Exteriors"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy") || collision.gameObject.layer == LayerMask.NameToLayer("Exteriors"))
         {
-            Destroy(gameObject);
+            controlador.FinalDelJuego();
         }
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Cosas"))
+        {
+            energiaController.UpdateEnergy(gainEnergy);
+            Destroy(collision.gameObject);
+        }
+
     }
 }
