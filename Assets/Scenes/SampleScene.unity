@@ -794,7 +794,7 @@ GameObject:
   - component: {fileID: 627400584}
   - component: {fileID: 627400583}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Timer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -817,7 +817,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.404, y: 0.8815186}
   m_AnchorMax: {x: 0.60400003, y: 0.9762593}
-  m_AnchoredPosition: {x: -0.000045776, y: 0.58121}
+  m_AnchoredPosition: {x: -0.000045776367, y: 0.5812073}
   m_SizeDelta: {x: -0.000091553, y: 1.1625}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &627400583
@@ -1402,6 +1402,7 @@ GameObject:
   m_Component:
   - component: {fileID: 899593495}
   - component: {fileID: 899593496}
+  - component: {fileID: 899593497}
   m_Layer: 0
   m_Name: Controlador del juego
   m_TagString: Untagged
@@ -1441,6 +1442,19 @@ MonoBehaviour:
   time: 1
   repeatTime: 2
   radio: 50
+--- !u!114 &899593497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 899593493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7052255f7140d6428b05088387ce3db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: {fileID: 787330097}
 --- !u!1 &1018922717
 GameObject:
   m_ObjectHideFlags: 0

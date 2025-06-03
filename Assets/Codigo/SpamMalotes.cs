@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 
-public class ControladorJuego : MonoBehaviour
+public class SpamMalotes : MonoBehaviour
 {
     public GameObject prefabMalos;
     public Transform prota;
@@ -17,6 +15,7 @@ public class ControladorJuego : MonoBehaviour
 
     private void CreateEnemigo()
     {
+        Debug.Log($"posicion del prota: {prota.position}");
         float x = prota.position.x + radio;
         float z = prota.position.z + radio;
         Vector3 position = new(UnityEngine.Random.Range(-x, x), UnityEngine.Random.Range(-z, z), 0.02f);
